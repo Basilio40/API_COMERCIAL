@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'cliente',
     'funcionario',
     'produto',
-    'vendas'
+    'vendas',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -127,9 +128,21 @@ USE_L10N = True
 USE_TZ = True
 
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'api_comercial',
+    'DESCRIPTION': 'api_comercial para uso geral',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
